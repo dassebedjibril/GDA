@@ -1,0 +1,38 @@
+from sklearn import datasets
+from sklearn.metrics import accuracy_score
+import numpy as np
+
+iris = datasets.load_iris()
+X = iris.data  # we only take the first two features.
+Y = (iris.target != 0) * 1
+
+phi=np.sum([Y==1])/n
+
+Y = Y.reshape((150,))
+
+mu_0=np.mean(X[Y==0],axis=0)
+mu_1=np.mean(X[Y==1],axis=0)
+
+def covariance(X,Y,u0,u1):
+    m,n=X.shape
+    M=np.zeros_like(X)
+    M[Y==1]=u1
+    M[Y==0]=u0
+    dif=X-M
+    cov=1/m*np.matmul(dif.T,dif)
+    return cov
+    
+    cov=covariance(X,Y,mu_0,mu_1)
+    
+    def P(y):
+    return ((phi)**y)*((1-phi)**(1-y))
+    
+    def p_x_y(X,mu,cov):
+    a=1/((2*np.pi)**(n/2)*np.linalg.det(np.abs(cov)))
+    D=X-mu
+    print(a)
+    #np.multiply(np.matmul(D,linalg.inv(cov)),D)
+    b=np.exp(-np.multiply(np.matmul(D,np.linalg.inv(cov)),D))
+    return a*b
+    
+    p_x_y(X,mu_0,cov)
