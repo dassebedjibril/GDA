@@ -28,11 +28,11 @@ def covariance(X,Y,u0,u1):
     return ((phi)**y)*((1-phi)**(1-y))
     
     def p_x_y(X,mu,cov):
-    a=1/((2*np.pi)**(n/2)*np.linalg.det(np.abs(cov)))
-    D=X-mu
-    print(a)
-    #np.multiply(np.matmul(D,linalg.inv(cov)),D)
-    b=np.exp(-np.multiply(np.matmul(D,np.linalg.inv(cov)),D))
-    return a*b
+        a=1/((2*np.pi)**(n/2)*np.linalg.det(np.abs(cov)))
+        D=X-mu
+        print(a)
+        #np.multiply(np.matmul(D,linalg.inv(cov)),D)
+        b=np.exp(-np.multiply(np.matmul(D,np.linalg.inv(cov)),D))
+        return a*b
     
     p_x_y(X,mu_0,cov)
